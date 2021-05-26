@@ -4,6 +4,7 @@ import fs from 'fs';
 import crypto, { generateKeyPairSync } from 'crypto';
 import { writeFileSync } from 'fs';
 const passphrase = 'mySecret';
+import { demoDataM41, demoDataM16 } from '../democData/data.js';
 
 import {
   encryptStringWithRsaPublicKey,
