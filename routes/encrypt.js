@@ -14,7 +14,7 @@ import {
 
 const router = express.Router();
 
-router.get('/data', (req, res) => {
+router.get('/data/:data', (req, res) => {
   const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
     modulusLength: 2048,
   });
@@ -22,11 +22,11 @@ router.get('/data', (req, res) => {
   console.log(`${publicKey.asymmetricKeySize}`.green.bold);
   // console.log(`${privateKey.type}`.red.bold);
 
-  // const data = req.params.data;
-  const data = {
-    name: 'Hayatullah',
-    lastName: 'Farahi',
-  };
+  const data = req.params.data;
+  // const data = {
+  //   name: 'Hayatullah',
+  //   lastName: 'Farahi',
+  // };
 
   const dataString = JSON.stringify(data);
 
@@ -92,5 +92,9 @@ router.get('/new', (req, res) => {
     decryptedData: JSON.parse(decryptedData),
   });
 });
+// router.get('/error', (req, res) => {
+//   res.status(400);
+//   throw new Error('No order items found');
+// });
 
 export default router;
